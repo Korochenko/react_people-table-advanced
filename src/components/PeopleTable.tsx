@@ -32,9 +32,9 @@ export const PeopleTable = ({ people }: PeopleTableProps) => {
     }
 
     if (centuries.length > 0) {
-      const peopleDiedCentury: string = `${Math.ceil(person.born / 100)}`;
+      const birthCentury: string = `${Math.ceil(person.born / 100)}`;
 
-      if (!centuries.includes(peopleDiedCentury)) {
+      if (!centuries.includes(birthCentury)) {
         return false;
       }
     }
