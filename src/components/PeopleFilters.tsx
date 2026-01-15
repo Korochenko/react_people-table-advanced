@@ -10,7 +10,12 @@ export const PeopleFilters = () => {
   function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
     const params = new URLSearchParams(searchParams);
 
-    params.set('query', event.target.value);
+    if (event.target.value === '') {
+      params.delete('query');
+    } else {
+      params.set('query', event.target.value);
+    }
+
     setSearchParams(params);
   }
 
@@ -55,7 +60,10 @@ export const PeopleFilters = () => {
       <p className="panel-heading">Filters</p>
 
       <p className="panel-tabs" data-cy="SexFilter">
-        <a className={classNames({ 'is-active': sex !== 'f' && sex !== 'm' })}>
+        <a
+          className={classNames({ 'is-active': sex !== 'f' && sex !== 'm' })}
+          onClick={() => toggleSex(null)}
+        >
           All
         </a>
         <a
